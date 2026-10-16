@@ -1,0 +1,123 @@
+/* === SECTION HEADINGS=== */
+.section-heading {
+  position: relative;
+  max-width: 760px;
+  margin: 0 auto 40px;
+  text-align: center;
+}
+
+.section-heading h2 {
+  margin: 0;
+  font-size: clamp(1.85rem, 3vw, 2.75rem);
+  line-height: 1.12;
+  letter-spacing: -.025em;
+}
+
+.section-heading p {
+  max-width: 620px;
+  margin: 12px auto 0;
+  color: var(--muted);
+  font-size: .9rem;
+}
+
+.decor {
+  position: absolute;
+  color: var(--pink);
+  font-size: 1.5rem;
+}
+
+/* === BOTÕES === */
+
+.hero-actions {
+  display: flex;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 22px;
+}
+
+
+.btn {
+  min-height: 48px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  padding:
+    12px
+    23px;
+
+  border: 0;
+
+  border-radius: 14px;
+
+  font-size: .88rem;
+  font-weight: 900;
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease;
+}
+
+
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+
+.btn-primary {
+  color: var(--white);
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--pink),
+      #ff5d99
+    );
+
+  box-shadow:
+    0 12px 28px
+    rgba(244, 63, 130, .24);
+}
+
+
+.btn-primary:hover {
+  box-shadow:
+    0 16px 32px
+    rgba(244, 63, 130, .32);
+}
+
+
+.text-link {
+  color: var(--purple);
+
+  font-size: .82rem;
+
+  font-weight: 900;
+
+  text-decoration:
+    underline;
+
+  text-decoration-color:
+    #e4b6d7;
+
+  text-decoration-thickness:
+    1px;
+
+  text-underline-offset:
+    5px;
+
+  transition:
+    color .2s ease;
+}
+
+
+.text-link:hover {
+  color: var(--pink-dark);
+}
+

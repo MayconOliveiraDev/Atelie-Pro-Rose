@@ -1,0 +1,49 @@
+/* === ANIMAÇÕES === */
+
+@keyframes floatStar {
+
+  0%,
+  100% {
+    transform:
+      translateY(0)
+      rotate(-8deg);
+  }
+
+  50% {
+    transform:
+      translateY(-10px)
+      rotate(8deg);
+  }
+}
+
+
+@keyframes floatHeart {
+
+  0%,
+  100% {
+    transform:
+      translateY(0)
+      rotate(0deg);
+  }
+
+  50% {
+    transform:
+      translateY(-8px)
+      rotate(8deg);
+  }
+}
+
+
+@keyframes floatSpark {
+
+  0%,
+  100% {
+    opacity: .55;
+    transform: scale(.9) rotate(0);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.15) rotate(12deg);
+  }
+}
