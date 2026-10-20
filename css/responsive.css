@@ -509,6 +509,48 @@
   line-height: 1.8;
 }
 
+
+
+/* FAQ - MOBILE */
+
+.faq-heading {
+  margin-bottom: 30px;
+}
+
+.faq-heading p {
+  font-size: 0.88rem;
+}
+
+.faq-item {
+  margin-bottom: 11px;
+  border-radius: 13px;
+}
+
+.faq-item summary {
+  gap: 12px;
+  padding: 18px 16px;
+  font-size: 0.88rem;
+}
+
+.faq-icon {
+  flex-basis: 28px;
+  width: 28px;
+  height: 28px;
+}
+
+.faq-answer {
+  padding: 0 16px 18px;
+}
+
+.faq-answer p {
+  font-size: 0.85rem;
+  line-height: 1.75;
+}
+
+.faq-contact {
+  margin-top: 28px;
+}
+
 }
 
 @media (max-width: 390px) {

@@ -453,6 +453,176 @@
   background: linear-gradient(135deg, #ffdbe9, #fff0d7);
 }
 
+
+/* ================================
+   PERGUNTAS FREQUENTES - FAQ
+================================ */
+
+.faq {
+  position: relative;
+  overflow: hidden;
+  background: #fffafd;
+}
+
+.faq-heading {
+  max-width: 720px;
+  margin: 0 auto 42px;
+  text-align: center;
+}
+
+.faq-eyebrow {
+  display: inline-block;
+  margin-bottom: 14px;
+  color: #c93683;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.faq-heading h2 {
+  margin: 0 0 16px;
+  color: #59365f;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  line-height: 1.2;
+}
+
+.faq-heading h2 em {
+  color: #c93683;
+  font-style: italic;
+}
+
+.faq-heading p {
+  max-width: 540px;
+  margin: 0 auto;
+  color: #765d7a;
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+.faq-list {
+  width: 100%;
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  margin-bottom: 14px;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid rgba(190, 115, 190, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 5px 18px rgba(112, 66, 119, 0.035);
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.faq-item[open] {
+  border-color: rgba(201, 54, 131, 0.4);
+  box-shadow: 0 10px 28px rgba(112, 66, 119, 0.07);
+}
+
+.faq-item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 22px 24px;
+  color: #59365f;
+  font-size: 0.96rem;
+  font-weight: 600;
+  line-height: 1.5;
+  list-style: none;
+  cursor: pointer;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::marker {
+  content: "";
+}
+
+.faq-item summary:focus-visible {
+  outline: 2px solid #c93683;
+  outline-offset: -4px;
+  border-radius: 14px;
+}
+
+.faq-icon {
+  position: relative;
+  display: block;
+  flex: 0 0 30px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #fbedf8;
+}
+
+.faq-icon::before,
+.faq-icon::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 2px;
+  content: "";
+  background: #c93683;
+  border-radius: 2px;
+  transform: translate(-50%, -50%);
+}
+
+.faq-icon::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+  transition: transform 0.25s ease;
+}
+
+.faq-item[open] .faq-icon::after {
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.faq-answer {
+  padding: 0 24px 22px;
+  animation: faq-reveal 0.25s ease;
+}
+
+.faq-answer p {
+  margin: 0;
+  color: #765d7a;
+  font-size: 0.9rem;
+  line-height: 1.85;
+}
+
+.faq-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-top: 36px;
+  text-align: center;
+}
+
+.faq-contact p {
+  margin: 0;
+  color: #59365f;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+@keyframes faq-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
 /* === FOOTER === */
 
 /* === FOOTER — ATELIÊ PRO ROSE === */
