@@ -510,6 +510,53 @@
 }
 
 
+/* HERO - MOBILE: imagem antes do texto */
+
+.hero-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 24px;
+}
+
+.hero-visual {
+  order: 1;
+  width: 100%;
+}
+
+.hero-copy {
+  order: 2;
+  width: 100%;
+  max-width: none;
+}
+
+.hero-art {
+  width: 100%;
+  max-width: 420px;
+  margin-inline: auto;
+}
+
+
+.hero {
+  min-height: auto;
+  padding-top: 100px;
+  padding-bottom: 48px;
+}
+
+.hero-grid {
+  min-height: auto;
+}
+
+.hero-art {
+  aspect-ratio: 1 / 0.82;
+}
+
+.hero-description {
+  margin-top: 18px;
+  margin-bottom: 24px;
+}
+
+
 
 /* FAQ - MOBILE */
 
