@@ -204,28 +204,18 @@
           <h2>Materiais que <em>inspiram,</em><br><em>ensinam e transformam</em> ♥</h2>
         </div>
 
-        <div class="category-filter" role="tablist" aria-label="Categorias de produtos">
-          <button class="filter-btn is-active" type="button" data-filter="todos">♥ &nbsp;Todos</button>
-          <button class="filter-btn" type="button" data-filter="kits">Kits Pedagógicos</button>
-          <button class="filter-btn" type="button" data-filter="paineis">Painéis Decorativos</button>
-          <button class="filter-btn" type="button" data-filter="lembrancinhas">Lembrancinhas</button>
-          <button class="filter-btn" type="button" data-filter="recursos">Recursos Educativos</button>
-        </div>
-
         <div class="product-grid">
           <article class="product-card" data-category="paineis">
             <div class="product-image image-placeholder"> <img src="imagens/painel-editado-5.jpg" alt=""></div>
             <div class="product-info">
               <h3>Painel Bem-vindos</h3>
-              <a href="#contato">Ver detalhes</a>
-            </div>
-          </article>
-
-          <article class="product-card" data-category="kits">
-            <div class="product-image image-placeholder"> <img src="imagens/chamadinha-editado1.jpeg" alt=""></div>
-            <div class="product-info">
-              <h3>Kit Chamada Divertida</h3>
-              <a href="#contato">Ver detalhes</a>
+              <button
+                class="product-details-btn"
+                type="button"
+                data-product-modal="painel-bem-vindos"
+                aria-label="Ver detalhes do Painel Bem-vindos">
+                Ver detalhes
+              </button>
             </div>
           </article>
 
@@ -233,7 +223,13 @@
             <div class="product-image image-placeholder"><img src="imagens/calendario-editado.jpg" alt=""></div>
             <div class="product-info">
               <h3>Painel Calendário</h3>
-              <a href="#contato">Ver detalhes</a>
+              <button
+                class="product-details-btn"
+                type="button"
+                data-product-modal="painel-calendario"
+                aria-label="Ver detalhes do Paine; Calendário">
+                Ver detalhes
+              </button>
             </div>
           </article>
 
@@ -241,21 +237,38 @@
             <div class="product-image image-placeholder"><img src="imagens/alfabeto-1-editado.jpg" alt=""></div>
             <div class="product-info">
               <h3>Kit Alfabeto Ilustrado</h3>
-              <a href="#contato">Ver detalhes</a>
+              <button
+                class="product-details-btn"
+                type="button"
+                data-product-modal="kit-alfabeto"
+                aria-label="Ver detalhes do Kit Alfabeto Ilustrado">
+                Ver detalhes
+              </button>
             </div>
           </article>
 
           <article class="product-card" data-category="lembrancinhas">
             <div class="product-image image-placeholder"><img src="imagens/formatura-editado-2.jpg" alt=""></div>
             <div class="product-info">
-              <h3>Lembrancinha Formatura</h3>
-              <a href="#contato">Ver detalhes</a>
+              <h3>Lembrancinhas</h3>
+              <button
+                class="product-details-btn"
+                type="button"
+                data-product-modal="lembrancinhas"
+                aria-label="Ver detalhes de Lembrancinhas">
+                Ver detalhes
+              </button>
             </div>
           </article>
         </div>
 
         <div class="center-action">
-          <a class="btn btn-primary" href="#contato">Ver todos os produtos <span>♥</span></a>
+          <button
+            class="btn btn-primary"
+            id="open-product-catalog"
+            type="button">
+            Ver todos os produtos <span>♥</span>
+          </button>
         </div>
       </div>
     </section>
@@ -354,7 +367,7 @@
     </section>
 
     
-    <!-- === PERGUNTAS FREQUENTES === -->
+    <!-- === FAQ === -->
     <section class="faq section" id="faq">
       <div class="container">
 
