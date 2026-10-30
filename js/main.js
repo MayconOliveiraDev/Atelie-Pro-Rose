@@ -5,7 +5,6 @@
   const menuToggle = document.querySelector(".menu-toggle");
   const navigation = document.querySelector(".main-nav");
   const navLinks = document.querySelectorAll(".main-nav a");
-  const filterButtons = document.querySelectorAll(".filter-btn");
   const productCards = document.querySelectorAll(".product-card");
   const leadForm = document.querySelector("#lead-form");
   const currentYear = document.querySelector("#current-year");
@@ -64,21 +63,7 @@
   }
 
   /* === PRODUCT FILTER === */
-  filterButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const selected = button.dataset.filter;
 
-      filterButtons.forEach((item) => {
-        item.classList.toggle("is-active", item === button);
-      });
-
-      productCards.forEach((card) => {
-        const category = card.dataset.category;
-        const shouldShow = selected === "todos" || category === selected;
-        card.classList.toggle("is-hidden", !shouldShow);
-      });
-    });
-  });
 
   /* === LEAD FORM === */
 
@@ -123,6 +108,142 @@
       window.open(whatsappURL, "_blank", "noopener,noreferrer");
     });
   }
+
+  
+  /* === PRODUCT DETAILS MODAL === */
+
+  const productModal = document.querySelector("#product-modal");
+  const modalProductImage = document.querySelector("#modal-product-image");
+  const modalProductTitle = document.querySelector("#modal-product-title");
+  const productZoom = document.querySelector("#product-zoom");
+  const productModalCloseButtons = document.querySelectorAll("[data-close-modal]");
+
+  let lastFocusedProductButton = null;
+
+  const openProductModal = (button) => {
+    if (!productModal || !modalProductImage || !modalProductTitle) return;
+
+    const productCard = button.closest(".product-card");
+
+    if (!productCard) return;
+
+    const productImage = productCard.querySelector(".product-image img");
+    const productTitle = productCard.querySelector(".product-info h3");
+
+    if (!productImage || !productTitle) return;
+
+    lastFocusedProductButton = button;
+
+    modalProductImage.src = productImage.src;
+    modalProductImage.alt = productImage.alt || productTitle.textContent.trim();
+    modalProductTitle.textContent = productTitle.textContent.trim();
+
+    modalProductImage.classList.remove("is-zoomed");
+    productZoom.innerHTML = "<span>+</span>";
+    productZoom.setAttribute("aria-label", "Ampliar imagem");
+
+    productModal.classList.add("is-open");
+    productModal.setAttribute("aria-hidden", "false");
+
+    document.body.style.overflow = "hidden";
+
+    productModal.querySelector(".product-modal-close").focus();
+  };
+
+  const closeProductModal = () => {
+    if (!productModal) return;
+
+    productModal.classList.remove("is-open");
+    productModal.setAttribute("aria-hidden", "true");
+
+    document.body.style.overflow = "";
+
+    modalProductImage.classList.remove("is-zoomed");
+    productZoom.innerHTML = "<span>+</span>";
+    productZoom.setAttribute("aria-label", "Ampliar imagem");
+
+    if (lastFocusedProductButton) {
+      lastFocusedProductButton.focus();
+    }
+  };
+
+  /* ABRIR MODAL */
+
+  document.querySelectorAll("[data-product-modal]").forEach((button) => {
+    button.addEventListener("click", () => {
+      openProductModal(button);
+    });
+  });
+
+  /* FECHAR MODAL */
+
+  productModalCloseButtons.forEach((button) => {
+    button.addEventListener("click", closeProductModal);
+  });
+
+  /* AMPLIAR IMAGEM */
+
+  const toggleProductZoom = () => {
+    if (!modalProductImage) return;
+
+    const isZoomed = modalProductImage.classList.toggle("is-zoomed");
+
+    productZoom.innerHTML = isZoomed ? "<span>−</span>" : "<span>+</span>";
+
+    productZoom.setAttribute(
+      "aria-label",
+      isZoomed ? "Reduzir imagem" : "Ampliar imagem"
+    );
+
+    
+    /* MOVIMENTAR A ÁREA AMPLIADA */
+
+    const modalImageContainer = document.querySelector(".product-modal-image");
+
+    if (modalImageContainer && modalProductImage) {
+      modalImageContainer.addEventListener("pointermove", (event) => {
+        if (!modalProductImage.classList.contains("is-zoomed")) return;
+
+        const containerRect = modalImageContainer.getBoundingClientRect();
+
+        // Dimensões originais da imagem, sem considerar a ampliação.
+        const imageWidth = modalProductImage.offsetWidth;
+        const imageHeight = modalProductImage.offsetHeight;
+
+        // Calcula a posição original da imagem dentro do contêiner.
+        const imageLeft = (containerRect.width - imageWidth) / 2;
+        const imageTop = (containerRect.height - imageHeight) / 2;
+
+        // Identifica onde o cursor ou o dedo está sobre a imagem.
+        const x = (event.clientX - containerRect.left - imageLeft) / imageWidth;
+        const y = (event.clientY - containerRect.top - imageTop) / imageHeight;
+
+        // Limita o movimento aos limites da imagem.
+        const positionX = Math.max(0, Math.min(100, x * 100));
+        const positionY = Math.max(0, Math.min(100, y * 100));
+
+        modalProductImage.style.transformOrigin =
+          `${positionX}% ${positionY}%`;
+      });
+    }
+
+  };
+
+  if (productZoom) {
+    productZoom.addEventListener("click", toggleProductZoom);
+  }
+
+  /* FECHAR COM ESC */
+
+  document.addEventListener("keydown", (event) => {
+    if (
+      event.key === "Escape" &&
+      productModal &&
+      productModal.classList.contains("is-open")
+    ) {
+      closeProductModal();
+    }
+  });
 
 
   /* === CURRENT YEAR === */

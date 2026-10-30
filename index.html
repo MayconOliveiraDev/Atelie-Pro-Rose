@@ -273,6 +273,103 @@
       </div>
     </section>
 
+    <!-- === MODAL DE DETALHES DO PRODUTO === -->
+
+      <div class="product-modal" id="product-modal" aria-hidden="true">
+
+        <div class="product-modal-overlay" data-close-modal></div>
+
+        <div
+          class="product-modal-content"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="modal-product-title"
+        >
+
+          <button
+            class="product-modal-close"
+            type="button"
+            aria-label="Fechar detalhes do produto"
+            data-close-modal
+          >
+            &times;
+          </button>
+
+          <div class="product-modal-image">
+            <img id="modal-product-image" src="" alt="">
+
+            <button
+              class="product-zoom-btn"
+              type="button"
+              id="product-zoom"
+              aria-label="Ampliar imagem"
+            >
+              <span>+</span>
+            </button>
+          </div>
+
+          <div class="product-modal-info">
+            <h2 id="modal-product-title"></h2>
+            <p>Um produto especial, feito com carinho e atenção aos detalhes. 💗</p>
+          </div>
+
+        </div>
+      </div>
+
+      
+    <!-- === MODAL DO CATÁLOGO COMPLETO === -->
+    <div class="catalog-modal" id="catalog-modal" aria-hidden="true">
+
+      <div class="catalog-modal-overlay" data-close-catalog></div>
+
+      <div
+        class="catalog-modal-content"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="catalog-title"
+      >
+
+        <button
+          class="catalog-modal-close"
+          type="button"
+          aria-label="Fechar catálogo"
+          data-close-catalog
+        >
+          &times;
+        </button>
+
+        <div class="catalog-modal-header">
+          <span>♥</span>
+          <h2 id="catalog-title">Nosso catálogo de produtos</h2>
+          <p>
+            Explore nossas criações e encontre algo especial
+            para transformar seus momentos de aprendizagem.
+          </p>
+        </div>
+
+        <div class="catalog-product-grid" id="catalog-product-grid">
+
+          <!-- Os produtos serão adicionados pelo JavaScript -->
+
+        </div>
+
+        <div class="catalog-modal-footer">
+          <h3>Gostou de algum produto?</h3>
+          <p>Entre em contato conosco. Será um prazer atender você!</p>
+
+          <a
+            href="https://wa.me/5514997090334?text=Ol%C3%A1!%20Vim%20pelo%20cat%C3%A1logo%20do%20Ateli%C3%AA%20Pro%20Rose%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es."
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-primary"
+          >
+            Conversar pelo WhatsApp <span>♥</span>
+          </a>
+        </div>
+
+      </div>
+    </div>  
+
     <!-- ===  DIFERENCIAIS === -->
     <section class="meaning section" id="kits">
       <div class="container meaning-grid">
