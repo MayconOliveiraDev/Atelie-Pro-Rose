@@ -246,6 +246,203 @@
   });
 
 
+
+
+  
+  
+  /* === PRODUCT CATALOG MODAL === */
+
+  const catalogModal = document.querySelector("#catalog-modal");
+  const catalogGrid = document.querySelector("#catalog-product-grid");
+  const openCatalogButton = document.querySelector("#open-product-catalog");
+  const catalogCloseButtons = document.querySelectorAll("[data-close-catalog]");
+
+  const catalogProducts = Array.from({ length: 22 }, (_, index) => {
+    const number = index + 1;
+
+    return {
+      name: `Produto ${number}`,
+      image: `imagens/catalogo/Produto-${number}.jpg`
+    };
+  });
+
+  // Gera os produtos automaticamente
+  if (catalogGrid) {
+    catalogProducts.forEach((product, index) => {
+      const card = document.createElement("article");
+      card.className = "catalog-product-card";
+
+      const image = document.createElement("img");
+      image.src = product.image;
+      image.alt = product.name;
+      image.loading = "lazy";
+      image.decoding = "async";
+      image.dataset.catalogIndex = index;
+
+      const title = document.createElement("h3");
+      title.textContent = product.name;
+
+      card.appendChild(image);
+      card.appendChild(title);
+
+      catalogGrid.appendChild(card);
+    });
+  }
+
+  // Abre o catálogo
+  const openCatalog = () => {
+    if (!catalogModal) return;
+
+    catalogModal.classList.add("is-open");
+    catalogModal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+
+    catalogModal.querySelector(".catalog-modal-close")?.focus();
+  };
+
+  // Fecha o catálogo
+  const closeCatalog = () => {
+    if (!catalogModal) return;
+
+    catalogModal.classList.remove("is-open");
+    catalogModal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+
+    if (openCatalogButton) openCatalogButton.focus();
+  };
+
+  if (openCatalogButton) {
+    openCatalogButton.addEventListener("click", openCatalog);
+  }
+
+  catalogCloseButtons.forEach((button) => {
+    button.addEventListener("click", closeCatalog);
+  });
+
+
+  /* === CATALOG IMAGE VIEWER === */
+
+  const catalogViewer = document.querySelector("#catalog-viewer");
+  const viewerImage = document.querySelector("#catalog-viewer-image");
+  const viewerCounter = document.querySelector("#viewer-counter");
+  const viewerPrev = document.querySelector("#viewer-prev");
+  const viewerNext = document.querySelector("#viewer-next");
+  const viewerCloseButtons = document.querySelectorAll("[data-close-viewer]");
+
+  let currentViewerIndex = 0;
+
+  // Atualiza a imagem ampliada
+  const updateViewerImage = () => {
+    if (!viewerImage || !viewerCounter) return;
+
+    const product = catalogProducts[currentViewerIndex];
+
+    viewerImage.src = product.image;
+    viewerImage.alt = product.name;
+
+    viewerCounter.textContent =
+      `${currentViewerIndex + 1} / ${catalogProducts.length}`;
+  };
+
+  // Abre o visualizador
+  const openViewer = (index) => {
+    if (!catalogViewer) return;
+
+    currentViewerIndex = index;
+
+    updateViewerImage();
+
+    catalogViewer.classList.add("is-open");
+    catalogViewer.setAttribute("aria-hidden", "false");
+
+    catalogViewer.querySelector(".catalog-viewer-close")?.focus();
+  };
+
+  // Fecha o visualizador
+  const closeViewer = () => {
+    if (!catalogViewer) return;
+
+    catalogViewer.classList.remove("is-open");
+    catalogViewer.setAttribute("aria-hidden", "true");
+
+    viewerImage.src = "";
+
+    if (catalogModal?.classList.contains("is-open")) {
+      catalogModal.querySelector(".catalog-modal-close")?.focus();
+    }
+  };
+
+  // Navega para a próxima imagem
+  const nextViewerImage = () => {
+    currentViewerIndex =
+      (currentViewerIndex + 1) % catalogProducts.length;
+
+    updateViewerImage();
+  };
+
+  // Navega para a imagem anterior
+  const previousViewerImage = () => {
+    currentViewerIndex =
+      (currentViewerIndex - 1 + catalogProducts.length) %
+      catalogProducts.length;
+
+    updateViewerImage();
+  };
+
+  // Clique nas imagens do catálogo
+  if (catalogGrid) {
+    catalogGrid.addEventListener("click", (event) => {
+      const image = event.target.closest("img[data-catalog-index]");
+
+      if (!image) return;
+
+      openViewer(Number(image.dataset.catalogIndex));
+    });
+  }
+
+  // Controles de navegação
+  if (viewerNext) {
+    viewerNext.addEventListener("click", nextViewerImage);
+  }
+
+  if (viewerPrev) {
+    viewerPrev.addEventListener("click", previousViewerImage);
+  }
+
+  // Fechar pelo botão ou pelo fundo escuro
+  viewerCloseButtons.forEach((button) => {
+    button.addEventListener("click", closeViewer);
+  });
+
+  // Teclado: ESC e setas
+  document.addEventListener("keydown", (event) => {
+    if (catalogViewer?.classList.contains("is-open")) {
+      if (event.key === "Escape") {
+        closeViewer();
+      }
+
+      if (event.key === "ArrowRight") {
+        nextViewerImage();
+      }
+
+      if (event.key === "ArrowLeft") {
+        previousViewerImage();
+      }
+    }
+  });
+
+  // Fechar catálogo com ESC
+  document.addEventListener("keydown", (event) => {
+    if (
+      event.key === "Escape" &&
+      catalogModal?.classList.contains("is-open") &&
+      !catalogViewer?.classList.contains("is-open")
+    ) {
+      closeCatalog();
+    }
+  });
+
+
   /* === CURRENT YEAR === */
   if (currentYear) {
     currentYear.textContent = new Date().getFullYear();

@@ -327,7 +327,7 @@
         role="dialog"
         aria-modal="true"
         aria-labelledby="catalog-title"
-      >
+       >
 
         <button
           class="catalog-modal-close"
@@ -339,8 +339,7 @@
         </button>
 
         <div class="catalog-modal-header">
-          <span>♥</span>
-          <h2 id="catalog-title">Nosso catálogo de produtos</h2>
+          <h2 id="catalog-title">Nosso catálogo de produtos <span>♥</span></h2>
           <p>
             Explore nossas criações e encontre algo especial
             para transformar seus momentos de aprendizagem.
@@ -366,9 +365,49 @@
             Conversar pelo WhatsApp <span>♥</span>
           </a>
         </div>
-
       </div>
     </div>  
+
+    
+<!-- === CATALOG IMAGE VIEWER === -->
+<div class="catalog-viewer" id="catalog-viewer" aria-hidden="true">
+
+  <div class="catalog-viewer-overlay" data-close-viewer></div>
+
+  <div class="catalog-viewer-content" role="dialog" aria-modal="true" aria-label="Imagem ampliada do produto">
+
+    <button
+      class="catalog-viewer-close"
+      type="button"
+      aria-label="Fechar imagem ampliada"
+      data-close-viewer
+    >&times;</button>
+
+    <button
+      class="catalog-viewer-nav catalog-viewer-prev"
+      type="button"
+      aria-label="Imagem anterior"
+      id="viewer-prev"
+    >&#10094;</button>
+
+    <div class="catalog-viewer-image">
+      <img id="catalog-viewer-image" src="" alt="">
+    </div>
+
+    <button
+      class="catalog-viewer-nav catalog-viewer-next"
+      type="button"
+      aria-label="Próxima imagem"
+      id="viewer-next"
+    >&#10095;</button>
+
+    <div class="catalog-viewer-counter" id="viewer-counter">
+      1 / 22
+    </div>
+
+  </div>
+</div>
+
 
     <!-- ===  DIFERENCIAIS === -->
     <section class="meaning section" id="kits">
