@@ -693,7 +693,7 @@
 /* Organização das colunas */
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+  grid-template-columns: 1.4fr .8fr 1fr;
   gap: 42px;
   align-items: start;
 }
@@ -791,6 +791,10 @@
   height: 16px;
   object-fit: contain;
   flex-shrink: 0;
+}
+
+.footer-contact > p {
+  margin-top: 9px;
 }
 
 /* Faixa inferior */
