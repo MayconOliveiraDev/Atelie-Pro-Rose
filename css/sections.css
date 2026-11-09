@@ -494,13 +494,20 @@
   min-height: 0;
   border: 0;
   border-radius: 18px;
+  overflow: hidden;
   background: linear-gradient(135deg, #ffdbe9, #fff0d7);
 }
 
+.social-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
 
-/* ================================
-   PERGUNTAS FREQUENTES - FAQ
-================================ */
+
+/* === FAQ === */
 
 .faq {
   position: relative;

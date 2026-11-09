@@ -411,6 +411,7 @@
 
   .instagram-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
   }
 
   .instagram-grid .social-image:last-child {
@@ -467,23 +468,23 @@
 }
 
   
-  .lead-form input,
-  .lead-form textarea {
-    box-sizing: border-box;
-    min-width: 0;
-    font-size: 16px;
-  }
+.lead-form input,
+.lead-form textarea {
+  box-sizing: border-box;
+  min-width: 0;
+  font-size: 16px;
+}
 
-  .lead-form textarea {
-    min-height: 130px;
-    padding: 12px;
-    line-height: 1.5;
-  }
+.lead-form textarea {
+  min-height: 130px;
+  padding: 12px;
+  line-height: 1.5;
+}
 
-  .lead-form textarea::placeholder {
-    font-size: 14px;
-    line-height: 1.5;
-  }
+.lead-form textarea::placeholder {
+  font-size: 14px;
+  line-height: 1.5;
+}
 
   
 .about-rose-grid {
