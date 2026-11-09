@@ -508,6 +508,14 @@
   text-align: center;
 }
 
+.footer-contact .footer-whatsapp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    margin: 0 auto;
+}
+
 
 /* HERO - MOBILE: imagem antes do texto */
 
