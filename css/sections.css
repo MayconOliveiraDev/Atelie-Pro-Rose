@@ -31,6 +31,13 @@
   font-size: 5rem;
 }
 
+.card-illustration img {
+  display: block;
+  width: 130px;
+  height: 130px;
+  object-fit: contain;
+}
+
 .audience-card h3 {
   margin: 5px 0 6px;
   color: var(--purple);

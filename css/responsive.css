@@ -445,6 +445,11 @@
     font-size: 3.6rem;
   }
 
+  .card-illustration img {
+    width: 82px;
+    height: 82px;
+  }
+
   .audience-card h3 {
     font-size: .88rem;
   }
@@ -716,6 +721,11 @@
   .card-illustration {
     height: 85px;
     font-size: 3.2rem;
+  }
+
+  .card-illustration img {
+    width: 72px;
+    height: 72px;
   }
 
   .audience-card h3 {
