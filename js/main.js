@@ -35,6 +35,40 @@
   let lastFocusedProductButton = null;
   let currentViewerIndex = 0;
 
+    /* =========================================
+     RASTREAMENTO DE EVENTOS - GTM
+  ========================================= */
+
+  document.addEventListener("click", (event) => {
+    const link = event.target.closest("a[href]");
+
+    if (!link) return;
+
+    const url = link.href;
+
+    if (url.includes("wa.me") || url.includes("api.whatsapp.com")) {
+      window.dataLayer = window.dataLayer || [];
+
+      window.dataLayer.push({
+        event: "clique_whatsapp",
+        link_url: url,
+        link_text: link.textContent.trim()
+      });
+
+      return;
+    }
+
+    if (url.includes("instagram.com")) {
+      window.dataLayer = window.dataLayer || [];
+
+      window.dataLayer.push({
+        event: "clique_instagram",
+        link_url: url,
+        link_text: link.textContent.trim()
+      });
+    }
+  });
+
   /* =========================================
      CONTROLE DO SCROLL DOS MODAIS
   ========================================= */
@@ -157,6 +191,13 @@
         formMessage.textContent =
           "Abrindo o WhatsApp para você continuar o atendimento!";
       }
+
+      window.dataLayer = window.dataLayer || [];
+
+      window.dataLayer.push({
+        event: "envio_formulario",
+        form_name: "lead-form"
+      });
 
       window.open(whatsappURL, "_blank", "noopener,noreferrer");
     });
